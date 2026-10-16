@@ -1,0 +1,4 @@
+Subcontractor,Trade,Contact Email,Policy Type,Carrier,Policy Number,Effective Date,Expiration Date,Each Occurrence Limit,Aggregate Limit,Additional Insured (Y/N),Waiver of Subrogation (Y/N),Last Reminder Sent,Notes
+Ridgeline Electric LLC,Electrical,office@ridgeline-electric.example,General Liability,Example Mutual Insurance Co.,GL-2026-104882,=TODAY()+190-365,=TODAY()+190,1000000,2000000,Y,Y,,Example row. Green: more than 30 days left. Replace with your own data.
+Summit Roofing Inc.,Roofing,admin@summitroofing.example,General Liability,Sample Casualty Company,CGL-55-301947,=TODAY()+18-365,=TODAY()+18,1000000,2000000,Y,N,=TODAY()-2,Example row. Yellow: expires within 30 days. Renewal requested.
+Clearwater Plumbing Co.,Plumbing,jen@clearwaterplumbing.example,Workers' Compensation,Demo State Fund,WC-0098-7731,=TODAY()-6-365,=TODAY()-6,Statutory,,N,Y,=TODAY()-9,Example row. Red: expired. Keep this sub off site until a renewal certificate arrives.

@@ -1,0 +1,20 @@
+# CoiPatrol
+
+> CoiPatrol is certificate of insurance (COI) tracking software for small construction and property firms. Upload an ACORD 25 PDF, CoiPatrol reads the policy dates and limits, shows every subcontractor on a green, yellow and red dashboard, and emails renewal reminders automatically. Free for up to 10 subcontractors, $49 a month for up to 50, $99 a month for up to 150. 14-day trial on paid plans, two months off with annual billing. No sales call.
+
+Limits, stated honestly: no carrier-direct policy verification, no managed review team, built for up to 150 subcontractors.
+
+## Product
+- [Home](https://coipatrol.com/): what CoiPatrol does and who it is for
+- [Pricing](https://coipatrol.com/pricing/): public pricing, Free, $49 and $99 a month
+
+## Free tools
+- [Free COI tracking spreadsheet](https://coipatrol.com/free-coi-tracking-spreadsheet/): ungated Excel and Google Sheets template with red, yellow and green expiration rules
+- [COI request email template](https://coipatrol.com/coi-request-email-template/): copy-and-paste request and renewal emails
+
+## Guides
+- [What is a certificate of insurance](https://coipatrol.com/what-is-a-certificate-of-insurance/): ACORD 25 explained box by box
+- [Additional insured vs certificate holder](https://coipatrol.com/additional-insured-vs-certificate-holder/)
+- [Subcontractor insurance requirements by trade](https://coipatrol.com/subcontractor-insurance-requirements/)
+- [COI tracking in Excel vs software](https://coipatrol.com/coi-tracking-excel-vs-software/)
+- [Best COI tracking software, honest comparison with real prices](https://coipatrol.com/best-coi-tracking-software/)
