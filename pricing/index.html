@@ -21,19 +21,74 @@
  "operatingSystem": "Web",
  "url": "https://coipatrol.com/",
  "description": "CoiPatrol pricing is public. Free for up to 10 subcontractors, $49 a month for up to 50, $99 a month for up to 150. No sales call, 14-day trial, two months off with annual billing.",
- "offers": {
-  "@type": "Offer",
-  "price": "49",
-  "priceCurrency": "USD",
-  "priceSpecification": {
-   "@type": "UnitPriceSpecification",
+ "offers": [
+  {
+   "@type": "Offer",
+   "name": "Team",
    "price": "49",
    "priceCurrency": "USD",
-   "unitText": "MONTH",
-   "billingDuration": "P1M"
+   "priceSpecification": [
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "49",
+     "priceCurrency": "USD",
+     "billingDuration": "P1M"
+    },
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "140",
+     "priceCurrency": "USD",
+     "billingDuration": "P3M"
+    },
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "265",
+     "priceCurrency": "USD",
+     "billingDuration": "P6M"
+    },
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "490",
+     "priceCurrency": "USD",
+     "billingDuration": "P1Y"
+    }
+   ],
+   "description": "Up to 50 subcontractors. Free plan for up to 10 subcontractors."
   },
-  "description": "Up to 50 subcontractors. Free plan for up to 10 subcontractors. $99 a month for up to 150."
- }
+  {
+   "@type": "Offer",
+   "name": "Business",
+   "price": "99",
+   "priceCurrency": "USD",
+   "priceSpecification": [
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "99",
+     "priceCurrency": "USD",
+     "billingDuration": "P1M"
+    },
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "282",
+     "priceCurrency": "USD",
+     "billingDuration": "P3M"
+    },
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "534",
+     "priceCurrency": "USD",
+     "billingDuration": "P6M"
+    },
+    {
+     "@type": "UnitPriceSpecification",
+     "price": "990",
+     "priceCurrency": "USD",
+     "billingDuration": "P1Y"
+    }
+   ],
+   "description": "Up to 150 subcontractors. Free plan for up to 10 subcontractors."
+  }
+ ]
 }
 </script>
 <script type="application/ld+json">
@@ -109,7 +164,8 @@
     <div class="plan featured">
       <h2>Team</h2>
       <p class="price">$49 <small>a month</small></p>
-      <p class="small">Up to 50 subcontractors. Or $490 a year, two months off.</p>
+      <p class="small">Up to 50 subcontractors.</p>
+      <p class="small">Pay for longer and save:<br>$140 every 3 months, save 5%<br>$265 every 6 months, save 10%<br><strong>$490 a year, 2 months free</strong></p>
       <ul>
         <li>Everything in Free</li>
         <li>Room for 50 subcontractors</li>
@@ -120,7 +176,8 @@
     <div class="plan">
       <h2>Business</h2>
       <p class="price">$99 <small>a month</small></p>
-      <p class="small">Up to 150 subcontractors. Or $990 a year, two months off.</p>
+      <p class="small">Up to 150 subcontractors.</p>
+      <p class="small">Pay for longer and save:<br>$282 every 3 months, save 5%<br>$534 every 6 months, save 10%<br><strong>$990 a year, 2 months free</strong></p>
       <ul>
         <li>Everything in Free</li>
         <li>Room for 150 subcontractors</li>
