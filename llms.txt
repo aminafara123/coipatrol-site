@@ -23,3 +23,8 @@ Limits, stated honestly: no carrier-direct policy verification, no managed revie
 - [Subcontractor insurance requirements by trade](https://coipatrol.com/subcontractor-insurance-requirements/)
 - [COI tracking in Excel vs software](https://coipatrol.com/coi-tracking-excel-vs-software/)
 - [Best COI tracking software, honest comparison with real prices](https://coipatrol.com/best-coi-tracking-software/)
+- [COI tracking software for small business](https://coipatrol.com/coi-tracking-software-for-small-business/): buyer guide for firms with 5 to 50 vendors
+- [COI management](https://coipatrol.com/coi-management/): collect, verify, track, renew and audit, step by step
+- [Subcontractor insurance tracking](https://coipatrol.com/subcontractor-insurance-tracking/): what general contractors record for each sub, and the premium audit
+- [COI tracking for property managers](https://coipatrol.com/coi-tracking-for-property-managers/): vendors, owner entities and lender requests
+- [Insurance certificate expiration reminders](https://coipatrol.com/insurance-certificate-expiration-reminder/): 30, 14, 7 day and day-of schedule with email wording
