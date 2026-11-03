@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>COI Request Email Template (Free, Copy and Paste)</title>
-<meta name="description" content="Free copy-and-paste email templates to request a certificate of insurance from a subcontractor, and to request a renewal COI before a policy expires. Includes what to put in every request.">
+<title>COI Request Email Templates (5 Free) and Email Generator</title>
+<meta name="description" content="Five free copy-and-paste emails to request a certificate of insurance: first request, renewal, missing additional insured endorsement, lapsed coverage and final notice. Plus a free generator that fills in your details.">
 <link rel="canonical" href="https://coipatrol.com/coi-request-email-template/">
-<meta property="og:title" content="COI Request Email Template (Free, Copy and Paste)">
-<meta property="og:description" content="Free copy-and-paste email templates to request a certificate of insurance from a subcontractor, and to request a renewal COI before a policy expires. Includes what to put in every request.">
+<meta property="og:title" content="COI Request Email Templates (5 Free) and Email Generator">
+<meta property="og:description" content="Five free copy-and-paste emails to request a certificate of insurance: first request, renewal, missing additional insured endorsement, lapsed coverage and final notice. Plus a free generator that fills in your details.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://coipatrol.com/coi-request-email-template/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -18,7 +18,7 @@
  "@type": "Article",
  "headline": "COI request email template",
  "datePublished": "2026-10-14",
- "dateModified": "2026-11-02",
+ "dateModified": "2026-11-03",
  "mainEntityOfPage": "https://coipatrol.com/coi-request-email-template/",
  "author": {
   "@type": "Organization",
@@ -72,9 +72,9 @@
 </header>
 <main id="main">
 <article class="wrap article">
-  <h1>COI request email template: copy, paste, send</h1>
+  <h1>COI request email templates: copy, paste, send</h1>
 <p class="dateline">Updated November 2026. Written for US construction and property firms.</p>
-  <p class="lede">Two ready-to-send emails. One requests a certificate of insurance from a new subcontractor. The other requests a renewal before a policy expires. Replace the parts in square brackets and send.</p>
+  <p class="lede">Five ready-to-send emails for every stage of chasing a certificate of insurance: the first request, the renewal, a missing additional insured endorsement, a lapsed policy and the final notice before removal from site. Replace the parts in square brackets and send, or use the free generator to fill in your details.</p>
 
   <h2>How do I request a COI from a subcontractor?</h2>
 <p class="answer">Send a written request stating your exact legal entity name as certificate holder and additional insured, the required coverage types, minimum limits, and endorsements. The sub forwards it to their broker, who issues the certificate. A complete request gets an accurate certificate on the first pass.</p>
@@ -124,8 +124,122 @@ Thank you,
 [Your name]
 [Company] | [Phone]</pre>
 
+  <h2>Can I generate a COI request email with my details filled in?</h2>
+  <p class="answer">Yes. Use the free generator below. Enter your company, the subcontractor and the due date, tick the coverages and endorsements you require, and it writes the first request email for you. Copy it into your email program and send. It runs in your browser, so nothing you type is sent anywhere.</p>
+
+  <form class="tool full" id="coi-gen" hidden>
+    <div class="fields two">
+      <label>Your exact legal company name<input name="co" type="text" autocomplete="organization" placeholder="as it must appear on the certificate"></label>
+      <label>Subcontractor name<input name="sub" type="text" autocomplete="off"></label>
+      <label>Project name<input name="proj" type="text" autocomplete="off"></label>
+      <label>Certificate due by<input name="due" type="date"></label>
+    </div>
+    <fieldset>
+      <legend>Required coverage and endorsements</legend>
+      <div class="fields two">
+        <label class="check"><input name="gl" type="checkbox" checked> General liability, $1,000,000 each occurrence, $2,000,000 aggregate</label>
+        <label class="check"><input name="wc" type="checkbox" checked> Workers' comp, statutory limits, employers' liability $1,000,000</label>
+        <label class="check"><input name="auto" type="checkbox" checked> Commercial auto, $1,000,000 combined single limit</label>
+        <label class="check"><input name="umb" type="checkbox"> Umbrella or excess liability</label>
+        <label class="check"><input name="ai" type="checkbox" checked> Additional insured endorsement</label>
+        <label class="check"><input name="wv" type="checkbox"> Waiver of subrogation endorsement</label>
+      </div>
+    </fieldset>
+    <label for="coi-gen-out">Your email
+      <textarea id="coi-gen-out" name="out" rows="18"></textarea>
+    </label>
+    <div class="actions"><button class="btn" type="button" id="coi-gen-copy">Copy email</button></div>
+    <p class="small">The limits shown are common minimums, not a rule. Edit the email to match your subcontract before you send it.</p>
+  </form>
+  <noscript><p class="small">The generator needs JavaScript. Template 1 above has the same wording to copy by hand.</p></noscript>
+  <script>
+  (function () {
+    var f = document.getElementById("coi-gen")
+    f.hidden = false
+    function v(n, d) { return f.elements[n].value.trim() || d }
+    function run() {
+      var e = f.elements, co = v("co", "[Your exact legal company name]"), sub = v("sub", "[Subcontractor name]"), proj = v("proj", "[Project name]")
+      var due = e.due.value ? new Date(e.due.value + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "[date]"
+      var cov = [], end = []
+      if (e.gl.checked) cov.push("General liability: $1,000,000 each occurrence, $2,000,000 aggregate")
+      if (e.wc.checked) cov.push("Workers' compensation: statutory limits, employers' liability $1,000,000")
+      if (e.auto.checked) cov.push("Commercial auto: $1,000,000 combined single limit")
+      if (e.umb.checked) cov.push("Umbrella or excess liability: [amount]")
+      if (e.ai.checked) end.push("Additional insured, ongoing and completed operations, primary and noncontributory, naming " + co)
+      if (e.wv.checked) end.push("Waiver of subrogation in favor of " + co)
+      var list = function (a) { return a.map(function (x, i) { return (i + 1) + ") " + x }).join("\n") }
+      e.out.value = "Subject: Certificate of insurance needed for " + proj + "\n\nHi " + sub + ",\n\n" +
+        "Before your crew starts on " + proj + ", we need a current certificate of insurance on file. Please forward this email to your insurance agent and ask them to send the certificate directly to [your email].\n\n" +
+        "Certificate holder:\n" + co + "\n[Street address, city, state, ZIP]\n\n" +
+        (cov.length ? "Required coverage:\n" + list(cov) + "\n\n" : "") +
+        (end.length ? "Required endorsements (please attach copies):\n" + list(end) + "\n\n" : "") +
+        "We need the certificate by " + due + ". Without it we cannot give site access.\n\nThank you,\n[Your name]\n" + co + " | [Phone]"
+    }
+    f.addEventListener("input", run)
+    f.addEventListener("change", run)
+    document.getElementById("coi-gen-copy").addEventListener("click", function () {
+      var t = f.elements.out, b = this
+      t.select()
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy email" }, 2000) }
+      if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(done, function () { document.execCommand("copy"); done() })
+      else { document.execCommand("copy"); done() }
+    })
+    run()
+  })()
+  </script>
+
   <h2>How far ahead of expiration should I request a renewal COI?</h2>
 <p class="answer">30 days before the policy expiration date is standard. Some firms start at 45 or 60 days for slow-responding subs. Automated reminders at 30, 14, and 7 days are a common cadence. Send the first email at 30 days and follow up at 14 and 7 if nothing arrives.</p>
+
+  <h2>What should I send when a certificate is wrong, lapsed or late?</h2>
+  <p class="answer">Send a short, specific email for each problem. If the additional insured endorsement is missing, ask for the endorsement page. If a policy has lapsed, put the work on hold and ask for the renewed certificate. If earlier requests went unanswered, send a final notice with a firm date before removal from site.</p>
+
+  <h3>Template 3: missing additional insured endorsement</h3>
+<pre>Subject: Additional insured endorsement needed for [Project name]
+
+Hi [Name],
+
+Thank you for the certificate of insurance. It shows a "Y" under additional insured, but we also need the endorsement page itself. The certificate alone does not add us to the policy.
+
+Please ask your insurance agent to send us the additional insured endorsement naming:
+[Your exact legal company name]
+
+If your policy has a blanket additional insured endorsement, a copy of that page is fine.
+
+We need it by [date].
+
+Thank you,
+[Your name]
+[Company] | [Phone]</pre>
+
+  <h3>Template 4: lapsed coverage</h3>
+<pre>Subject: Your [policy type] policy has expired: work on hold
+
+Hi [Name],
+
+Our records show your [policy type] policy expired on [expiration date]. We have not received a renewed certificate.
+
+Until we receive a current certificate, your crew cannot work on [Project name]. If the policy has renewed, please ask your agent to send the updated certificate to [your email] today. If it has lapsed, please tell us when new coverage will start.
+
+Thank you,
+[Your name]
+[Company] | [Phone]</pre>
+
+  <h3>Template 5: final notice before removal from site</h3>
+<pre>Subject: Final notice: certificate of insurance needed by [date]
+
+Hi [Name],
+
+We asked for an updated certificate of insurance on [dates of earlier requests] and have not received one.
+
+If we do not have a current certificate showing the required coverage by [date], we will have to remove your crew from [Project name] until it arrives.
+
+Please forward this email to your insurance agent. They can send the certificate directly to [your email].
+
+Thank you,
+[Your name]
+[Company] | [Phone]</pre>
+  <p>Check your subcontract before sending the final notice, so the consequence you name is one the contract allows. When a certificate does arrive, check it with our free <a href="/how-to-verify-a-certificate-of-insurance/">certificate of insurance checker</a>. It drafts the fix email for you if anything falls short.</p>
 
   <h2>What do I do if a subcontractor does not respond?</h2>
   <p class="answer">Follow up at 14 days and again at 7 days before expiry. Copy your project manager on the last one. Call the agent listed as producer on the old certificate, because they can often send the renewal directly. If the policy expires with no new certificate, keep the sub off site until one arrives.</p>
@@ -152,10 +266,12 @@ Thank you,
     <div><p class="foot-h">Product</p><ul>
       <li><a href="/">Home</a></li><li><a href="/pricing/">Pricing</a></li>
       <li><a href="https://app.coipatrol.com/register">Sign up free</a></li><li><a href="https://app.coipatrol.com/login">Sign in</a></li>
-      <li><a href="/best-coi-tracking-software/">Compare tools</a></li></ul></div>
+      <li><a href="/best-coi-tracking-software/">Compare tools</a></li><li><a href="/mycoi-alternative/">myCOI alternative</a></li></ul></div>
     <div><p class="foot-h">Free tools</p><ul>
       <li><a href="/free-coi-tracking-spreadsheet/">COI tracking spreadsheet</a></li>
-      <li><a href="/coi-request-email-template/">COI request email</a></li>
+      <li><a href="/coi-request-email-template/">COI request emails</a></li>
+      <li><a href="/how-to-verify-a-certificate-of-insurance/">COI checker</a></li>
+      <li><a href="/workers-comp-audit-subcontractors/">Workers' comp audit calculator</a></li>
       <li><a href="/coi-tracking-excel-vs-software/">Excel vs software</a></li></ul></div>
     <div><p class="foot-h">Guides</p><ul>
       <li><a href="/what-is-a-certificate-of-insurance/">What is a COI</a></li>

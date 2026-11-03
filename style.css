@@ -153,3 +153,20 @@ pre { background: var(--tint); padding: 16px; border-radius: var(--radius); whit
 @media print {
   .site-head, .site-foot, .cta-box { display: none; }
 }
+
+/* client-side tools (inline JS on the page, nothing leaves the browser) */
+.tool { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin: 24px 0; }
+.tool .fields { display: grid; gap: 14px; margin-bottom: 16px; }
+.tool fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; margin: 0 0 16px; }
+.tool legend { font-weight: 600; padding: 0 6px; }
+.tool label { display: block; font-weight: 600; font-size: 0.95rem; }
+.tool label.check { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+.tool input:not([type="checkbox"]), .tool textarea { display: block; width: 100%; margin-top: 4px; padding: 8px 10px; font: inherit; font-weight: 400; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
+.tool textarea { min-height: 280px; font-size: 0.92rem; }
+.tool .hint { display: block; font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+.tool output, .tool .out { display: block; background: var(--tint); border-radius: var(--radius); padding: 12px 16px; margin: 0 0 16px; }
+.tool ul.results { list-style: none; padding: 0; }
+.tool .pass::before { content: "Pass: "; font-weight: 700; color: var(--green); }
+.tool .fail::before { content: "Fix: "; font-weight: 700; color: var(--red); }
+button.btn { font: inherit; cursor: pointer; }
+@media (min-width: 720px) { .tool .fields.two { grid-template-columns: 1fr 1fr; } }
