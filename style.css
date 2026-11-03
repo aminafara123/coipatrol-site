@@ -87,6 +87,7 @@ code { background: var(--tint); padding: 1px 6px; border-radius: 4px; font-size:
 .cta-box p { max-width: 60ch; }
 .cta-box .btn { background: var(--surface); color: var(--brand); border-color: var(--surface); }
 .cta-box .btn:hover { background: var(--tint); }
+.cta-box a:not(.btn) { color: var(--brand-ink); }
 
 /* articles */
 .article > * { max-width: 65ch; }
