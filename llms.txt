@@ -15,7 +15,9 @@ Limits, stated honestly: no carrier-direct policy verification, no managed revie
 
 ## Free tools
 - [Free COI tracking spreadsheet](https://coipatrol.com/free-coi-tracking-spreadsheet/): ungated Excel and Google Sheets template with red, yellow and green expiration rules
-- [COI request email template](https://coipatrol.com/coi-request-email-template/): copy-and-paste request and renewal emails
+- [COI request email templates](https://coipatrol.com/coi-request-email-template/): five copy-and-paste emails (first request, renewal, missing endorsement, lapsed coverage, final notice) and an email generator
+- [How to verify a certificate of insurance](https://coipatrol.com/how-to-verify-a-certificate-of-insurance/): field-by-field ACORD 25 checks, fake certificate red flags, and a checker that compares a certificate to your requirements
+- [Workers' comp audit and uninsured subcontractors](https://coipatrol.com/workers-comp-audit-subcontractors/): how uninsured subs are added to your payroll at audit, with a premium estimate calculator
 
 ## Guides
 - [What is a certificate of insurance](https://coipatrol.com/what-is-a-certificate-of-insurance/): ACORD 25 explained box by box
@@ -23,6 +25,7 @@ Limits, stated honestly: no carrier-direct policy verification, no managed revie
 - [Subcontractor insurance requirements by trade](https://coipatrol.com/subcontractor-insurance-requirements/)
 - [COI tracking in Excel vs software](https://coipatrol.com/coi-tracking-excel-vs-software/)
 - [Best COI tracking software, honest comparison with real prices](https://coipatrol.com/best-coi-tracking-software/)
+- [myCOI alternative](https://coipatrol.com/mycoi-alternative/): myCOI is now illumend, where it fits, where self-serve fits, and a switching checklist
 - [COI tracking software for small business](https://coipatrol.com/coi-tracking-software-for-small-business/): buyer guide for firms with 5 to 50 vendors
 - [COI management](https://coipatrol.com/coi-management/): collect, verify, track, renew and audit, step by step
 - [Subcontractor insurance tracking](https://coipatrol.com/subcontractor-insurance-tracking/): what general contractors record for each sub, and the premium audit
