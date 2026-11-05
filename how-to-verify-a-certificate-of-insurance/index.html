@@ -11,9 +11,10 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://coipatrol.com/how-to-verify-a-certificate-of-insurance/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">
 {
@@ -243,18 +244,18 @@
     <table>
       <thead><tr><th>Field on the ACORD 25</th><th>What to check</th><th>Red flag</th></tr></thead>
       <tbody>
-        <tr><td>Date (top right)</td><td>When the certificate was issued</td><td>An old date on a certificate you asked for this week. The sub may have re-sent an old file</td></tr>
-        <tr><td>Producer</td><td>The agent or broker's name, phone and email</td><td>No contact details, so you cannot call to confirm</td></tr>
-        <tr><td>Insured</td><td>The legal business name and address on your subcontract</td><td>A different company, a trade name or a parent company</td></tr>
-        <tr><td>Insurers A to F</td><td>A named insurance company for each letter, with its NAIC number</td><td>An agency name where the insurer should be, or no NAIC number</td></tr>
-        <tr><td>Type of insurance</td><td>Every coverage your contract requires is listed</td><td>A required coverage is missing</td></tr>
-        <tr><td>ADDL INSD and SUBR WVD</td><td>A "Y" where your contract requires additional insured or a waiver of subrogation</td><td>A "Y" with no endorsement page behind it</td></tr>
-        <tr><td>Policy number</td><td>A number for every policy</td><td>Blank, "TBD" or "applied for"</td></tr>
-        <tr><td>Policy effective and expiration dates</td><td>The dates cover the whole job</td><td>Already expired, or the policy starts after the work started</td></tr>
-        <tr><td>Limits</td><td>Each limit is at or above your minimum</td><td>A limit below your minimum, or a blank limit</td></tr>
-        <tr><td>Description of operations</td><td>Your project and any status your contract requires</td><td>This box is the only place that claims additional insured status</td></tr>
-        <tr><td>Certificate holder</td><td>Your exact legal name and address</td><td>Another company's name, or a misspelling of yours</td></tr>
-        <tr><td>Authorized representative</td><td>Signed by the producer</td><td>No signature</td></tr>
+        <tr><td>Date (top right)</td><td data-label="What to check">When the certificate was issued</td><td data-label="Red flag">An old date on a certificate you asked for this week. The sub may have re-sent an old file</td></tr>
+        <tr><td>Producer</td><td data-label="What to check">The agent or broker's name, phone and email</td><td data-label="Red flag">No contact details, so you cannot call to confirm</td></tr>
+        <tr><td>Insured</td><td data-label="What to check">The legal business name and address on your subcontract</td><td data-label="Red flag">A different company, a trade name or a parent company</td></tr>
+        <tr><td>Insurers A to F</td><td data-label="What to check">A named insurance company for each letter, with its NAIC number</td><td data-label="Red flag">An agency name where the insurer should be, or no NAIC number</td></tr>
+        <tr><td>Type of insurance</td><td data-label="What to check">Every coverage your contract requires is listed</td><td data-label="Red flag">A required coverage is missing</td></tr>
+        <tr><td>ADDL INSD and SUBR WVD</td><td data-label="What to check">A "Y" where your contract requires additional insured or a waiver of subrogation</td><td data-label="Red flag">A "Y" with no endorsement page behind it</td></tr>
+        <tr><td>Policy number</td><td data-label="What to check">A number for every policy</td><td data-label="Red flag">Blank, "TBD" or "applied for"</td></tr>
+        <tr><td>Policy effective and expiration dates</td><td data-label="What to check">The dates cover the whole job</td><td data-label="Red flag">Already expired, or the policy starts after the work started</td></tr>
+        <tr><td>Limits</td><td data-label="What to check">Each limit is at or above your minimum</td><td data-label="Red flag">A limit below your minimum, or a blank limit</td></tr>
+        <tr><td>Description of operations</td><td data-label="What to check">Your project and any status your contract requires</td><td data-label="Red flag">This box is the only place that claims additional insured status</td></tr>
+        <tr><td>Certificate holder</td><td data-label="What to check">Your exact legal name and address</td><td data-label="Red flag">Another company's name, or a misspelling of yours</td></tr>
+        <tr><td>Authorized representative</td><td data-label="What to check">Signed by the producer</td><td data-label="Red flag">No signature</td></tr>
       </tbody>
     </table>
   </div>

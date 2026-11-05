@@ -11,9 +11,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://coipatrol.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">
 {
@@ -148,6 +149,46 @@
  ]
 }
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do my subs need an account?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Each sub gets a private upload link. The sub or their insurance agent uploads the ACORD 25 PDF there. No login, no password, nothing to install."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens when I import my list?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Import a CSV with name, email and trade columns. Every sub with no certificate on file gets a request email with their private upload link."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if it reads something wrong?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Every upload page shows what was read next to the PDF. Remove a wrong policy line and add the right one. If a date or a limit cannot be read, the certificate is held for you to type it in."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What does it cost?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Free for up to 10 subcontractors. $49 a month for up to 50, $99 for up to 250 and $199 for up to 1,000. Paid plans start with 14 days free."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -204,9 +245,9 @@
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap tint">
   <h2>How CoiPatrol works</h2>
-  <ol class="steps prose">
+  <ol class="steps">
     <li><strong>Add your subs.</strong> Type them in or import a CSV, and each sub with no certificate on file gets a request email.</li>
     <li><strong>Subs send their certificates.</strong> Each sub gets a private upload link with no account, or you forward the agent's email to your company's certificate address.</li>
     <li><strong>CoiPatrol reads and checks it.</strong> It reads the carrier, limits and dates, checks them against your requirements, tells the sub what to fix and holds only unreadable ones for you.</li>
@@ -230,24 +271,30 @@
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap tint">
   <h2>What CoiPatrol reads on a certificate</h2>
   <p class="prose">CoiPatrol reads these parts of an ACORD 25, the one-page certificate most agents issue. The companies are made up.</p>
   <div class="acord-grid">
     <figure class="acord">
       <div class="head"><span>CERTIFICATE OF LIABILITY INSURANCE</span><span>ACORD 25 (sample)</span></div>
-      <div><span class="lbl">PRODUCER</span>Sample Insurance Agency, Springfield, KS</div>
-      <div><span class="lbl">INSURED</span><span class="pin">1</span>Ridgeline Framing LLC</div>
-      <div><span class="lbl">INSURER A</span><span class="pin">2</span>Prairie Mutual Casualty Co.</div>
-      <div>
-        <span class="lbl">COVERAGES</span>
-        <div class="row"><span><span class="pin">3</span>A. Commercial general liability</span><span>PMC-GL-448120</span></div>
-        <div class="row"><span><span class="pin">4</span>Policy eff 05/22/2026</span><span>Policy exp 05/22/2027</span></div>
-        <div class="row"><span><span class="pin">5</span>Each occurrence $1,000,000</span><span>General aggregate $1,000,000</span></div>
-        <div class="row"><span><span class="pin">6</span>ADDL INSD: Y</span><span>SUBR WVD: Y</span></div>
+      <div class="cells">
+        <div class="cell wide"><span class="lbl">PRODUCER</span>Sample Insurance Agency, Springfield, KS</div>
+        <div class="cell wide"><span class="lbl">INSURED</span><span class="pin">1</span>Ridgeline Framing LLC</div>
+        <div class="cell wide"><span class="lbl">INSURER A</span><span class="pin">2</span>Prairie Mutual Casualty Co.</div>
+        <div class="sect">COVERAGES</div>
+        <div class="cell wide"><span class="lbl">TYPE OF INSURANCE</span><span class="pin">3</span>A. Commercial general liability</div>
+        <div class="cell wide"><span class="lbl">POLICY NUMBER</span>PMC-GL-448120</div>
+        <div class="cell"><span class="lbl">POLICY EFF</span>05/22/2026</div>
+        <div class="cell hl"><span class="lbl">POLICY EXP</span><span class="pin">4</span>05/22/2027</div>
+        <div class="cell"><span class="lbl">EACH OCCURRENCE</span><span class="pin">5</span>$1,000,000</div>
+        <div class="cell"><span class="lbl">GENERAL AGGREGATE</span>$1,000,000</div>
+        <div class="cell"><span class="lbl">ADDL INSD</span><span class="pin">6</span>Y</div>
+        <div class="cell"><span class="lbl">SUBR WVD</span>Y</div>
+        <div class="cell wide"><span class="lbl">TYPE OF INSURANCE</span>A. Workers compensation</div>
+        <div class="cell"><span class="lbl">POLICY NUMBER</span>PMC-WC-448121</div>
+        <div class="cell"><span class="lbl">POLICY EXP</span>05/22/2027</div>
+        <div class="cell wide"><span class="lbl">CERTIFICATE HOLDER</span>Your company</div>
       </div>
-      <div><div class="row"><span>A. Workers compensation</span><span>PMC-WC-448121</span><span>05/22/2026 to 05/22/2027</span></div></div>
-      <div><span class="lbl">CERTIFICATE HOLDER</span>Your company</div>
       <figcaption>Sample only, not a real certificate. Real ones have more boxes, these are the ones that matter for tracking.</figcaption>
     </figure>
     <ol class="notes">
@@ -270,16 +317,18 @@
   </div>
 </section>
 
-<section class="wrap faq prose">
+<section class="wrap faq tint">
   <h2>Questions before you sign up</h2>
-  <h3>Do my subs need an account?</h3>
-  <p>No. Each sub gets a private upload link. The sub or their insurance agent uploads the ACORD 25 PDF there. No login, no password, nothing to install.</p>
-  <h3>What happens when I import my list?</h3>
-  <p>Import a CSV with name, email and trade columns. Every sub with no certificate on file gets a request email with their private upload link.</p>
-  <h3>What if it reads something wrong?</h3>
-  <p>Every upload page shows what was read next to the PDF. Remove a wrong policy line and add the right one. If a date or a limit cannot be read, the certificate is held for you to type it in.</p>
-  <h3>What does it cost?</h3>
-  <p>Free for up to 10 subcontractors. $49 a month for up to 50, $99 for up to 250 and $199 for up to 1,000. Paid plans start with 14 days free. See <a href="/pricing/">pricing</a>. Free tools: <a href="/how-to-verify-a-certificate-of-insurance/">COI checker</a> and <a href="/coi-request-email-template/">request emails</a>.</p>
+  <div class="cols">
+<h3>Do my subs need an account?</h3>
+<p>No. Each sub gets a private upload link. The sub or their insurance agent uploads the ACORD 25 PDF there. No login, no password, nothing to install.</p>
+<h3>What happens when I import my list?</h3>
+<p>Import a CSV with name, email and trade columns. Every sub with no certificate on file gets a request email with their private upload link.</p>
+<h3>What if it reads something wrong?</h3>
+<p>Every upload page shows what was read next to the PDF. Remove a wrong policy line and add the right one. If a date or a limit cannot be read, the certificate is held for you to type it in.</p>
+<h3>What does it cost?</h3>
+<p>Free for up to 10 subcontractors. $49 a month for up to 50, $99 for up to 250 and $199 for up to 1,000. Paid plans start with 14 days free. See <a href="/pricing/">pricing</a>. Free tools: <a href="/how-to-verify-a-certificate-of-insurance/">COI checker</a> and <a href="/coi-request-email-template/">request emails</a>.</p>
+  </div>
 </section>
 
 <section class="wrap">
