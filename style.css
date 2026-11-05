@@ -96,7 +96,7 @@ code { background: var(--tint); padding: 1px 6px; border-radius: 4px; font-size:
 .article > * { max-width: 65ch; }
 .article > .full { max-width: none; }
 .lede { font-size: 1.12rem; color: var(--muted); }
-.article { padding: 40px 0 24px; }
+.article { padding-top: 40px; padding-bottom: 24px; }  /* keep .wrap side gutter */
 .crumb { font-size: 0.9rem; color: var(--muted); margin-bottom: 8px; }
 .dateline { font-size: 0.9rem; color: var(--muted); margin: -4px 0 24px; }
 .answer { font-size: 1.06rem; border-left: 3px solid var(--brand); padding-left: 16px; }
