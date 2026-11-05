@@ -256,3 +256,7 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   .table-wrap.wide td:first-child { font-weight: 600; }
   .table-wrap.wide td[data-label]::before { content: attr(data-label); display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
 }
+
+.shot { margin: 0 0 32px; }
+.shot img { display: block; width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; }
+.shot figcaption { font-size: 14px; color: #555; margin-top: 8px; }
