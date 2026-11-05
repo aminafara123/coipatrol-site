@@ -21,7 +21,7 @@
  "@type": "Article",
  "headline": "How to verify a certificate of insurance",
  "datePublished": "2026-11-03",
- "dateModified": "2026-11-03",
+ "dateModified": "2026-11-05",
  "mainEntityOfPage": "https://coipatrol.com/how-to-verify-a-certificate-of-insurance/",
  "author": {
   "@type": "Organization",
@@ -122,6 +122,112 @@
   <h2>How do I verify a certificate of insurance?</h2>
   <p class="answer">Do three things. First, make sure the certificate came from the agent or broker named as producer, not from the sub. Second, compare every coverage, limit and date to the requirements in your contract. Third, if anything looks wrong or the job is large, call the producer and confirm the policy is in force.</p>
 
+  <h2>Does this certificate meet my requirements?</h2>
+  <p class="answer">Use the free checker below to find out. Enter your minimums once, then type in what the certificate shows. You get a pass or fix result for each line in plain English, and a drafted email you can send to the sub and their agent. Everything runs in your browser. Nothing you type is sent anywhere.</p>
+
+  <form class="tool full" id="coi-check" hidden>
+    <div class="fields two">
+      <fieldset>
+        <legend>Your requirements</legend>
+        <div class="fields">
+          <label>General liability, each occurrence ($)<input name="rOcc" type="text" class="money" inputmode="numeric" autocomplete="off" value="1,000,000"></label>
+          <label>General liability, aggregate ($)<input name="rAgg" type="text" class="money" inputmode="numeric" autocomplete="off" value="2,000,000"></label>
+          <label>Auto, combined single limit ($)<input name="rAuto" type="text" class="money" inputmode="numeric" autocomplete="off" value="1,000,000"><span class="hint">Enter 0 if you do not require auto.</span></label>
+          <label class="check"><input name="rWc" type="checkbox" checked> Workers' comp required</label>
+          <label class="check"><input name="rAi" type="checkbox" checked> Additional insured required</label>
+          <label class="check"><input name="rWaiver" type="checkbox"> Waiver of subrogation required</label>
+          <label>Coverage must last until<input name="rDate" type="date"><span class="hint">Your job's end date. Leave blank to check against today.</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>What the certificate shows</legend>
+        <div class="fields">
+          <label>Subcontractor name<input name="sub" type="text" autocomplete="off" placeholder="as in the Insured box"></label>
+          <label>General liability, each occurrence ($)<input name="cOcc" type="text" class="money" inputmode="numeric" autocomplete="off"></label>
+          <label>General liability, aggregate ($)<input name="cAgg" type="text" class="money" inputmode="numeric" autocomplete="off"></label>
+          <label>Auto, combined single limit ($)<input name="cAuto" type="text" class="money" inputmode="numeric" autocomplete="off"><span class="hint">Leave blank if no auto policy is listed.</span></label>
+          <label class="check"><input name="cWc" type="checkbox"> Workers' comp policy listed</label>
+          <label class="check"><input name="cAi" type="checkbox"> "Y" under ADDL INSD</label>
+          <label class="check"><input name="cWaiver" type="checkbox"> "Y" under SUBR WVD</label>
+          <label>Earliest expiration date on the certificate<input name="cExp" type="date"></label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="out" aria-live="polite"><ul class="results"></ul></div>
+    <label for="coi-email">Drafted email asking for the fix
+      <textarea id="coi-email" name="email" rows="14"></textarea>
+    </label>
+    <div class="actions"><button class="btn" type="button" id="coi-copy">Copy email</button></div>
+  </form>
+  <noscript><p class="small">The checker needs JavaScript. The table below lists the same checks, so you can work through them by hand.</p></noscript>
+  <script>
+  (function () {
+    var f = document.getElementById("coi-check")
+    f.hidden = false
+    var usd = function (n) { return "$" + n.toLocaleString("en-US") }
+    var num = function (el) { var v = el.value.replace(/[^0-9.]/g, ""); return v === "" ? null : parseFloat(v) }
+    var fmt = function (d) { return new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) }
+    function limit(label, req, got, out) {
+      if (!req) return
+      if (got === null) out.push([false, label + ": nothing entered from the certificate.", label + " must be at least " + usd(req) + ". It is not shown on the certificate."])
+      else if (got >= req) out.push([true, label + ": " + usd(got) + " meets your " + usd(req) + " minimum."])
+      else out.push([false, label + ": " + usd(got) + " is below your " + usd(req) + " minimum.", label + " must be at least " + usd(req) + ". The certificate shows " + usd(got) + "."])
+    }
+    function box(label, req, got, fix, out) {
+      if (!req) return
+      out.push(got ? [true, label + " is shown on the certificate."] : [false, label + " is not shown on the certificate.", fix])
+    }
+    function run() {
+      var e = f.elements, out = []
+      var list = f.querySelector(".results")
+      if (!["cOcc", "cAgg", "cAuto", "cExp"].some(function (n) { return e[n].value }) && !["cWc", "cAi", "cWaiver"].some(function (n) { return e[n].checked })) { list.textContent = ""; e.email.value = ""; return }
+      limit("General liability each occurrence", num(e.rOcc), num(e.cOcc), out)
+      limit("General liability aggregate", num(e.rAgg), num(e.cAgg), out)
+      limit("Auto combined single limit", num(e.rAuto), num(e.cAuto), out)
+      box("Workers' comp", e.rWc.checked, e.cWc.checked, "Please list a workers' compensation policy at statutory limits.", out)
+      box("Additional insured", e.rAi.checked, e.cAi.checked, "Please name us as additional insured and attach the endorsement page.", out)
+      box("Waiver of subrogation", e.rWaiver.checked, e.cWaiver.checked, "Please add a waiver of subrogation in our favor and attach the endorsement page.", out)
+      var soon = new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10)
+      var need = e.rDate.value || new Date().toISOString().slice(0, 10)
+      if (!e.cExp.value) out.push([false, "Expiration date: nothing entered from the certificate.", "Please show the expiration date for every policy."])
+      else if (e.cExp.value < need) out.push([false, "Expiration date: " + fmt(e.cExp.value) + " is before " + fmt(need) + ".", "The earliest policy expires on " + fmt(e.cExp.value) + ". We need coverage through " + fmt(need) + ". Please send a certificate showing the renewed policy."])
+      else if (e.cExp.value < soon) out.push(["warn", "Expiration date: " + fmt(e.cExp.value) + " covers " + fmt(need) + ", but the policy ends within 30 days."])
+      else out.push([true, "Expiration date: " + fmt(e.cExp.value) + " covers " + fmt(need) + "."])
+      list.textContent = ""
+      out.forEach(function (r) { var li = document.createElement("li"); li.className = r[0] === "warn" ? "warn" : r[0] ? "pass" : "fail"; li.textContent = r[1]; list.appendChild(li) })
+      var fixes = out.filter(function (r) { return r[0] === false })
+      var sub = e.sub.value.trim() || "[Subcontractor name]"
+      var endorse = e.rAi.checked || e.rWaiver.checked ? "\nPlease also attach the endorsement pages, because the certificate on its own does not prove additional insured status or a waiver.\n" : ""
+      e.email.value = fixes.length ?
+        "Subject: Updated certificate of insurance needed for " + sub + "\n\nHi,\n\nThank you for the certificate of insurance for " + sub + ". It does not yet meet our requirements. Please ask your insurance agent to send an updated certificate directly to us that fixes the following:\n\n" +
+        fixes.map(function (r, i) { return (i + 1) + ") " + r[2] }).join("\n") + "\n" + endorse +
+        "\nUntil the updated certificate arrives, we cannot give your crew site access.\n\nThank you,\n[Your name]\n[Company] | [Phone]" :
+        "Every check passed, so no fix email is needed." + (out.some(function (r) { return r[0] === "warn" }) ? " One policy ends within 30 days, so ask for the renewed certificate when it is issued." : "") + (endorse ? "\n\nBefore you file it, ask for the endorsement pages, because the certificate on its own does not prove additional insured status or a waiver." : "")
+    }
+    f.addEventListener("input", function (ev) {
+      var t = ev.target
+      if (t.classList.contains("money")) {
+        var d = t.value.slice(0, t.selectionStart).replace(/\D/g, "").length
+        var v = t.value.replace(/\D/g, "")
+        t.value = v ? Number(v).toLocaleString("en-US") : ""
+        for (var p = 0, c = 0; p < t.value.length && c < d; p++) if (/\d/.test(t.value[p])) c++
+        t.setSelectionRange(p, p)
+      }
+      run()
+    })
+    f.addEventListener("change", run)
+    document.getElementById("coi-copy").addEventListener("click", function () {
+      var t = f.elements.email, b = this
+      t.select()
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy email" }, 2000) }
+      if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(done, function () { document.execCommand("copy"); done() })
+      else { document.execCommand("copy"); done() }
+    })
+    run()
+  })()
+  </script>
+  <p>The checker covers the numbers and boxes. It cannot tell you whether the certificate is genuine. For that, read the red flags below and call the producer.</p>
+
   <h2>What should I check on each field of the ACORD 25?</h2>
   <p class="answer">Work from top to bottom. Check that the producer can be contacted, the insured name matches your contract and each insurer is a real insurance company. Then check every coverage, limit and date against your requirements. Finish with the certificate holder box, the endorsement columns and the signature. The table below lists each field.</p>
   <div class="table-wrap wide full">
@@ -144,99 +250,6 @@
     </table>
   </div>
   <p>For what each box means in plain words, see our guide to <a href="/what-is-a-certificate-of-insurance/">what a certificate of insurance is</a>. For typical minimums, see <a href="/subcontractor-insurance-requirements/">subcontractor insurance requirements by trade</a>.</p>
-
-  <h2>Does this certificate meet my requirements?</h2>
-  <p class="answer">Use the free checker below to find out. Enter your minimums once, then type in what the certificate shows. You get a pass or fix result for each line in plain English, and a drafted email you can send to the sub and their agent. Everything runs in your browser. Nothing you type is sent anywhere.</p>
-
-  <form class="tool full" id="coi-check" hidden>
-    <div class="fields two">
-      <fieldset>
-        <legend>Your requirements</legend>
-        <div class="fields">
-          <label>General liability, each occurrence ($)<input name="rOcc" type="number" min="0" step="1000" inputmode="decimal" value="1000000"></label>
-          <label>General liability, aggregate ($)<input name="rAgg" type="number" min="0" step="1000" inputmode="decimal" value="2000000"></label>
-          <label>Auto, combined single limit ($)<input name="rAuto" type="number" min="0" step="1000" inputmode="decimal" value="1000000"><span class="hint">Enter 0 if you do not require auto.</span></label>
-          <label class="check"><input name="rWc" type="checkbox" checked> Workers' comp required</label>
-          <label class="check"><input name="rAi" type="checkbox" checked> Additional insured required</label>
-          <label class="check"><input name="rWaiver" type="checkbox"> Waiver of subrogation required</label>
-          <label>Coverage must last until<input name="rDate" type="date"><span class="hint">Your job's end date. Leave blank to check against today.</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>What the certificate shows</legend>
-        <div class="fields">
-          <label>Subcontractor name<input name="sub" type="text" autocomplete="off" placeholder="as in the Insured box"></label>
-          <label>General liability, each occurrence ($)<input name="cOcc" type="number" min="0" step="1000" inputmode="decimal"></label>
-          <label>General liability, aggregate ($)<input name="cAgg" type="number" min="0" step="1000" inputmode="decimal"></label>
-          <label>Auto, combined single limit ($)<input name="cAuto" type="number" min="0" step="1000" inputmode="decimal"><span class="hint">Leave blank if no auto policy is listed.</span></label>
-          <label class="check"><input name="cWc" type="checkbox"> Workers' comp policy listed</label>
-          <label class="check"><input name="cAi" type="checkbox"> "Y" under ADDL INSD</label>
-          <label class="check"><input name="cWaiver" type="checkbox"> "Y" under SUBR WVD</label>
-          <label>Earliest expiration date on the certificate<input name="cExp" type="date"></label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="out" aria-live="polite"><ul class="results"></ul></div>
-    <label for="coi-email">Drafted email asking for the fix
-      <textarea id="coi-email" name="email" rows="14"></textarea>
-    </label>
-    <div class="actions"><button class="btn" type="button" id="coi-copy">Copy email</button></div>
-  </form>
-  <noscript><p class="small">The checker needs JavaScript. The table above lists the same checks, so you can work through them by hand.</p></noscript>
-  <script>
-  (function () {
-    var f = document.getElementById("coi-check")
-    f.hidden = false
-    var usd = function (n) { return "$" + n.toLocaleString("en-US") }
-    var num = function (el) { return el.value === "" ? null : parseFloat(el.value) }
-    var fmt = function (d) { return new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) }
-    function limit(label, req, got, out) {
-      if (!req) return
-      if (got === null) out.push([false, label + ": nothing entered from the certificate.", label + " must be at least " + usd(req) + ". It is not shown on the certificate."])
-      else if (got >= req) out.push([true, label + ": " + usd(got) + " meets your " + usd(req) + " minimum."])
-      else out.push([false, label + ": " + usd(got) + " is below your " + usd(req) + " minimum.", label + " must be at least " + usd(req) + ". The certificate shows " + usd(got) + "."])
-    }
-    function box(label, req, got, fix, out) {
-      if (!req) return
-      out.push(got ? [true, label + " is shown on the certificate."] : [false, label + " is not shown on the certificate.", fix])
-    }
-    function run() {
-      var e = f.elements, out = []
-      limit("General liability each occurrence", num(e.rOcc), num(e.cOcc), out)
-      limit("General liability aggregate", num(e.rAgg), num(e.cAgg), out)
-      limit("Auto combined single limit", num(e.rAuto), num(e.cAuto), out)
-      box("Workers' comp", e.rWc.checked, e.cWc.checked, "Please list a workers' compensation policy at statutory limits.", out)
-      box("Additional insured", e.rAi.checked, e.cAi.checked, "Please name us as additional insured and attach the endorsement page.", out)
-      box("Waiver of subrogation", e.rWaiver.checked, e.cWaiver.checked, "Please add a waiver of subrogation in our favor and attach the endorsement page.", out)
-      var need = e.rDate.value || new Date().toISOString().slice(0, 10)
-      if (!e.cExp.value) out.push([false, "Expiration date: nothing entered from the certificate.", "Please show the expiration date for every policy."])
-      else if (e.cExp.value < need) out.push([false, "Expiration date: " + fmt(e.cExp.value) + " is before " + fmt(need) + ".", "The earliest policy expires on " + fmt(e.cExp.value) + ". We need coverage through " + fmt(need) + ". Please send a certificate showing the renewed policy."])
-      else out.push([true, "Expiration date: " + fmt(e.cExp.value) + " covers " + fmt(need) + "."])
-      var list = f.querySelector(".results")
-      list.textContent = ""
-      out.forEach(function (r) { var li = document.createElement("li"); li.className = r[0] ? "pass" : "fail"; li.textContent = r[1]; list.appendChild(li) })
-      var fixes = out.filter(function (r) { return !r[0] })
-      var sub = e.sub.value.trim() || "[Subcontractor name]"
-      var endorse = e.rAi.checked || e.rWaiver.checked ? "\nPlease also attach the endorsement pages, because the certificate on its own does not prove additional insured status or a waiver.\n" : ""
-      e.email.value = fixes.length ?
-        "Subject: Updated certificate of insurance needed for " + sub + "\n\nHi,\n\nThank you for the certificate of insurance for " + sub + ". It does not yet meet our requirements. Please ask your insurance agent to send an updated certificate directly to us that fixes the following:\n\n" +
-        fixes.map(function (r, i) { return (i + 1) + ") " + r[2] }).join("\n") + "\n" + endorse +
-        "\nUntil the updated certificate arrives, we cannot give your crew site access.\n\nThank you,\n[Your name]\n[Company] | [Phone]" :
-        "Every check passed, so no fix email is needed." + (endorse ? "\n\nBefore you file it, ask for the endorsement pages, because the certificate on its own does not prove additional insured status or a waiver." : "")
-    }
-    f.addEventListener("input", run)
-    f.addEventListener("change", run)
-    document.getElementById("coi-copy").addEventListener("click", function () {
-      var t = f.elements.email, b = this
-      t.select()
-      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy email" }, 2000) }
-      if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(done, function () { document.execCommand("copy"); done() })
-      else { document.execCommand("copy"); done() }
-    })
-    run()
-  })()
-  </script>
-  <p>The checker covers the numbers and boxes. It cannot tell you whether the certificate is genuine. For that, read the red flags below and call the producer.</p>
 
   <h2>What are the signs of a fake or altered certificate?</h2>
   <p class="answer">The biggest sign is where it came from. A certificate sent by the sub, not by their agent, deserves a closer look. Other signs are mismatched fonts or spacing, dates that do not make sense, missing policy numbers and a producer you cannot reach. Any one of these is a reason to call the agent before you file it.</p>

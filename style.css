@@ -173,6 +173,7 @@ pre { background: var(--tint); padding: 16px; border-radius: var(--radius); whit
 .tool ul.results { list-style: none; padding: 0; }
 .tool .pass::before { content: "Pass: "; font-weight: 700; color: var(--green); }
 .tool .fail::before { content: "Fix: "; font-weight: 700; color: var(--red); }
+.tool .warn::before { content: "Renewal due soon: "; font-weight: 700; color: var(--yellow); }
 button.btn { font: inherit; cursor: pointer; }
 @media (min-width: 720px) { .tool .fields.two { grid-template-columns: 1fr 1fr; } }
 
