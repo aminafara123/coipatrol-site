@@ -213,6 +213,14 @@
     "@type": "Answer",
     "text": "Yes, with no Zapier app needed. Paid plans send signed JSON webhooks to one URL per company. Zapier, Make and n8n take that URL as a catch-hook. The eight events are certificate filed, needs review, held, policy expiring, policy expired, missing certificate, document received and sub added."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there an API?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, on paid plans. Each company gets its own API keys. You can check status, list and read subs with their policies and certificates, download a certificate, create a sub and request a certificate. Limit is 60 requests a minute. The docs are public at app.coipatrol.com/api."
+   }
   }
  ]
 }
@@ -329,6 +337,7 @@
       <li>Your own reminder wording and schedule</li>
       <li>Emails sent as your company</li>
       <li>Webhooks for Zapier, Make and n8n, signed, eight events</li>
+      <li>An API with per-company keys, documented at app.coipatrol.com/api</li>
     </ul>
     <p>Free also has the weekly summary, certificate history and one login.</p>
   </div>
@@ -358,6 +367,8 @@
 <p>Yes. A sub can send a W-9, license, agreement or other document through the same private upload link, with no account. The files are stored privately and never read by any model. You can require a W-9 from every sub and see a "W-9 missing" tag. The CSV export shows who has one.</p>
     <h3>Does CoiPatrol work with Zapier?</h3>
 <p>Yes, with no Zapier app needed. Paid plans send signed JSON webhooks to one URL per company. Zapier, Make and n8n take that URL as a catch-hook. The eight events are certificate filed, needs review, held, policy expiring, policy expired, missing certificate, document received and sub added.</p>
+    <h3>Is there an API?</h3>
+<p>Yes, on paid plans. Each company gets its own API keys. You can check status, list and read subs with their policies and certificates, download a certificate, create a sub and request a certificate. Limit is 60 requests a minute. The docs are public at app.coipatrol.com/api.</p>
     <h3>Do my subs need an account?</h3>
     <p>No. Each sub gets a private upload link. The sub or their insurance agent opens it and uploads the ACORD 25 PDF. The sub doesn't log in or install anything.</p>
     <h3>Can certificates come in by email?</h3>
@@ -384,7 +395,8 @@
     <h2>Planned</h2>
     <p>These are not built yet. None has a date.</p>
     <ul>
-      <li>An API.</li>
+      <li>Escalation to the sub's insurance agent after reminders go unanswered.</li>
+      <li>An upload-and-read checker on this site, three certificates a day, free.</li>
     </ul>
   </section>
 
@@ -406,7 +418,8 @@
       <li><a href="/">Home</a></li><li><a href="/pricing/">Pricing</a></li>
       <li><a href="https://app.coipatrol.com/register">Sign up free</a></li><li><a href="https://app.coipatrol.com/login">Sign in</a></li>
       <li><a href="/best-coi-tracking-software/">Compare tools</a></li><li><a href="/mycoi-alternative/">myCOI alternative</a></li>
-      <li><a href="/coi-tracking-for-property-managers/">For property managers</a></li></ul></div>
+      <li><a href="/coi-tracking-for-property-managers/">For property managers</a></li>
+      <li><a href="https://app.coipatrol.com/api">API docs</a></li></ul></div>
     <div><p class="foot-h">Free tools</p><ul>
       <li><a href="/free-coi-tracking-spreadsheet/">COI tracking spreadsheet</a></li>
       <li><a href="/coi-request-email-template/">COI request emails</a></li>
