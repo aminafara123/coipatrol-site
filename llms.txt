@@ -1,17 +1,18 @@
 # CoiPatrol
 
-> CoiPatrol is certificate of insurance (COI) tracking software for small construction and property firms. Upload an ACORD 25 PDF, CoiPatrol reads the policy dates and limits, shows every subcontractor on a green, yellow and red dashboard, and emails renewal reminders automatically. Free for up to 10 subcontractors, $49 a month for up to 50 (Growth plan), $99 a month for up to 150 (Pro plan). 14-day trial on paid plans. No sales call.
+> CoiPatrol is certificate of insurance (COI) tracking software for small construction and property firms. Upload an ACORD 25 PDF, CoiPatrol reads the policy dates and limits, shows every subcontractor on a green, yellow and red dashboard, and emails renewal reminders automatically. Free for up to 10 subcontractors, $49 a month for up to 50 (Growth plan), $99 a month for up to 250 (Pro plan), $199 a month for up to 1,000 (Business plan). 14-day trial on paid plans. No sales call.
 
 Pricing in full (USD, flat, not per vendor, every plan has every feature):
 - Free: $0, up to 10 subcontractors, no credit card
 - Growth, up to 50 subcontractors: $49 a month, $140 every 3 months, $265 every 6 months, $490 a year
-- Pro, up to 150 subcontractors: $99 a month, $282 every 3 months, $534 every 6 months, $990 a year
+- Pro, up to 250 subcontractors: $99 a month, $282 every 3 months, $534 every 6 months, $990 a year
+- Business, up to 1,000 subcontractors: $199 a month, $567 every 3 months, $1,075 every 6 months, $1,990 a year
 
-Limits, stated honestly: no carrier-direct policy verification, no managed review team, built for up to 150 subcontractors.
+Limits, stated honestly: no carrier-direct policy verification, no managed review team, built for up to 1,000 subcontractors.
 
 ## Product
 - [Home](https://coipatrol.com/): what CoiPatrol does and who it is for
-- [Pricing](https://coipatrol.com/pricing/): public pricing, Free, Growth ($49 a month) and Pro ($99 a month), with 3-month, 6-month and yearly options
+- [Pricing](https://coipatrol.com/pricing/): public pricing, Free, Growth ($49 a month), Pro ($99 a month) and Business ($199 a month), with 3-month, 6-month and yearly options
 
 ## Free tools
 - [Free COI tracking spreadsheet](https://coipatrol.com/free-coi-tracking-spreadsheet/): ungated Excel and Google Sheets template with red, yellow and green expiration rules
