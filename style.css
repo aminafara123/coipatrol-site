@@ -260,3 +260,25 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 .shot { margin: 0 0 32px; }
 .shot img { display: block; width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; }
 .shot figcaption { font-size: 14px; color: #555; margin-top: 8px; }
+
+/* pricing switch (CSS only), featured badge, shared includes block */
+.billing, .article > .billing { position: relative; max-width: none; }
+.plan.featured { padding-top: 32px; }
+.billing > input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.billing > label { display: inline-block; padding: 8px 20px; border: 1px solid var(--brand); font-weight: 600; cursor: pointer; color: var(--brand); background: var(--surface); }
+.billing > label[for="bill-m"] { border-radius: var(--radius) 0 0 var(--radius); }
+.billing > label[for="bill-y"] { border-radius: 0 var(--radius) var(--radius) 0; margin-left: -1px; }
+#bill-m:checked ~ label[for="bill-m"], #bill-y:checked ~ label[for="bill-y"] { background: var(--brand); color: var(--brand-ink); }
+.billing > input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; }
+.billing > p.small { display: inline-block; margin: 0 0 0 12px; }
+.price .y, .deal .y, #bill-y:checked ~ .plans .m { display: none; }
+#bill-y:checked ~ .plans .y { display: inline; }
+.deal { margin: 0; font-weight: 600; color: var(--green); min-height: 1.6em; }
+.plan { position: relative; }
+.plan .badge { position: absolute; top: -14px; left: 20px; background: var(--brand); color: var(--brand-ink); font-size: 13px; font-weight: 700; padding: 3px 12px; border-radius: 999px; }
+.plan .note { text-align: center; margin: 8px 0 0; min-height: 3em; }
+.includes ul { padding-left: 20px; }
+@media (min-width: 720px) { .includes ul { columns: 2; column-gap: 40px; } }
+.plan .btn { padding-inline: 10px; font-size: 15px; }
+@media (min-width: 960px) and (max-width: 1139px) { .plans.four { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1140px) { .plan .btn { white-space: nowrap; } }
