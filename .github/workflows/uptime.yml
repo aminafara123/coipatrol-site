@@ -1,0 +1,27 @@
+# Outside uptime check for app.coipatrol.com. Runs on GitHub's servers every
+# 15 minutes. If the app does not answer 200 after three tries, the run fails
+# and GitHub emails the account that owns the repo. Deployed with the site.
+name: Uptime
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      url:
+        description: URL to check
+        default: https://app.coipatrol.com/demo
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: app.coipatrol.com must answer 200
+        run: |
+          url="${{ github.event.inputs.url || 'https://app.coipatrol.com/demo' }}"
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
+            echo "try $i: $url -> $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 30
+          done
+          echo "::error::app.coipatrol.com is down ($code)"
+          exit 1
