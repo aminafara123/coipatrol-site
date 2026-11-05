@@ -205,6 +205,14 @@
     "@type": "Answer",
     "text": "Yes. A sub can send a W-9, license, agreement or other document through the same private upload link, with no account. The files are stored privately and never read by any model. You can require a W-9 from every sub and see a \"W-9 missing\" tag. The CSV export shows who has one."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Does CoiPatrol work with Zapier?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, with no Zapier app needed. Paid plans send signed JSON webhooks to one URL per company. Zapier, Make and n8n take that URL as a catch-hook. The eight events are certificate filed, needs review, held, policy expiring, policy expired, missing certificate, document received and sub added."
+   }
   }
  ]
 }
@@ -262,6 +270,7 @@
         <li>One-click "Send reminder" button per sub</li>
         <li>Projects and jobs, with the dashboard and exports filtered by project</li>
         <li>W-9s, licenses and agreements through the same upload link, stored and never read by a model</li>
+        <li>Vendor list export for QuickBooks (contacts, not payments)</li>
       </ul>
       <a class="btn light" href="https://app.coipatrol.com/register">Start free</a>
       <p class="small note">No credit card.</p>
@@ -319,6 +328,7 @@
       <li>The audit ZIP</li>
       <li>Your own reminder wording and schedule</li>
       <li>Emails sent as your company</li>
+      <li>Webhooks for Zapier, Make and n8n, signed, eight events</li>
     </ul>
     <p>Free also has the weekly summary, certificate history and one login.</p>
   </div>
@@ -346,6 +356,8 @@
 <p>Yes. Put each sub on a project, then filter the dashboard by project. The CSV export and the audit ZIP filter by project too, and a projects page shows the sub count per project. It works on every plan, including Free.</p>
     <h3>Can subs send a W-9 through the link?</h3>
 <p>Yes. A sub can send a W-9, license, agreement or other document through the same private upload link, with no account. The files are stored privately and never read by any model. You can require a W-9 from every sub and see a "W-9 missing" tag. The CSV export shows who has one.</p>
+    <h3>Does CoiPatrol work with Zapier?</h3>
+<p>Yes, with no Zapier app needed. Paid plans send signed JSON webhooks to one URL per company. Zapier, Make and n8n take that URL as a catch-hook. The eight events are certificate filed, needs review, held, policy expiring, policy expired, missing certificate, document received and sub added.</p>
     <h3>Do my subs need an account?</h3>
     <p>No. Each sub gets a private upload link. The sub or their insurance agent opens it and uploads the ACORD 25 PDF. The sub doesn't log in or install anything.</p>
     <h3>Can certificates come in by email?</h3>
@@ -372,8 +384,6 @@
     <h2>Planned</h2>
     <p>These are not built yet. None has a date.</p>
     <ul>
-      <li>A 1099-ready vendor export for QuickBooks.</li>
-      <li>Webhooks and Zapier.</li>
       <li>An API.</li>
     </ul>
   </section>
