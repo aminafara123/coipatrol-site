@@ -98,6 +98,14 @@
     "@type": "Answer",
     "text": "Most small-business tools don't. They read the certificate and track its dates, so a policy cancelled mid-term can still look valid. Some enterprise platforms, and tools that share live policy data from the insurer, can catch cancellations. If you need that, expect a higher price and a longer setup."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I check a certificate without signing up?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Upload a PDF, JPG or PNG on our verify page and CoiPatrol reads the insured, agent, carriers, limits and dates, then compares them to typical minimums. It is free, limited to three a day per visitor, and nothing is stored. You need no account."
+   }
   }
  ]
 }
@@ -135,6 +143,82 @@
 
   <h2>How do I verify a certificate of insurance?</h2>
   <p class="answer">First, make sure the certificate came from the agent or broker named as producer, not from the sub. Second, compare every coverage, limit and date to the requirements in your contract. Third, if anything looks wrong or the job is large, call the producer and confirm the policy is in force.</p>
+
+  <h2>Can I upload a certificate and have it read?</h2>
+  <p class="answer">Yes. Choose a PDF, JPG or PNG below and CoiPatrol reads the insured, the agent, and each policy's carrier, number, dates and limits. It then compares them to typical minimums. It is free, limited to three a day per visitor, and nothing is stored. You need no account.</p>
+
+  <form class="tool full" id="coi-read" hidden>
+    <p class="cta-title">Upload a certificate and we read it</p>
+    <label>Certificate file (PDF, JPG or PNG, 10 MB or smaller)
+      <input name="file" id="coi-file" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+    </label>
+    <div class="actions"><button class="btn" type="submit" id="coi-read-btn">Read this certificate</button></div>
+    <p class="small">Three a day, free, nothing is stored</p>
+    <div class="out" id="coi-read-out" aria-live="polite" hidden></div>
+  </form>
+  <script>
+  (function () {
+    var f = document.getElementById("coi-read")
+    f.hidden = false
+    var btn = document.getElementById("coi-read-btn"), out = document.getElementById("coi-read-out")
+    var names = { GL: "General liability", WC: "Workers' comp", AUTO: "Auto", UMBRELLA: "Umbrella", OTHER: "Other" }
+    function el(tag, text, cls) { var n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n }
+    function show(node) { out.textContent = ""; out.hidden = false; out.appendChild(node) }
+    function say(text, cls) { var d = el("div"); d.appendChild(el("p", text, cls)); show(d) }
+    function line(parent, label, value, conf) {
+      var li = el("li", label + ": " + (value === null || value === undefined || value === "" ? "not found" : value))
+      if (typeof conf === "number" && conf < 0.9) { var m = el("strong", " check this"); li.appendChild(m) }
+      parent.appendChild(li)
+    }
+    var usd = function (n) { return n === null || n === undefined ? null : "$" + Number(n).toLocaleString("en-US") }
+    var yn = function (v) { return v === true ? "Yes" : v === false ? "No" : null }
+    function render(d) {
+      var box = el("div"), c = d.confidence || {}
+      var top = el("ul", undefined, "results")
+      line(top, "Insured", d.insured_name, c.insured_name)
+      line(top, "Agent", d.producer_name, c.producer_name)
+      line(top, "Agent email", d.producer_email, c.producer_email)
+      box.appendChild(top)
+      ;(d.policies || []).forEach(function (p) {
+        var pc = p.confidence || {}
+        box.appendChild(el("h3", names[p.policy_type] || p.policy_type))
+        var ul = el("ul", undefined, "results")
+        line(ul, "Carrier", p.carrier, pc.carrier)
+        line(ul, "Policy number", p.policy_number, pc.policy_number)
+        line(ul, "Effective", p.effective_date, pc.effective_date)
+        line(ul, "Expires", p.expiration_date, pc.expiration_date)
+        line(ul, "Each occurrence", usd(p.each_occurrence_limit), pc.each_occurrence_limit)
+        line(ul, "Aggregate", usd(p.aggregate_limit), pc.aggregate_limit)
+        line(ul, "Additional insured box", yn(p.additional_insured), pc.additional_insured)
+        line(ul, "Waiver of subrogation box", yn(p.waiver_of_subrogation), pc.waiver_of_subrogation)
+        box.appendChild(ul)
+      })
+      var v = el("ul", undefined, "results")
+      if (d.meets_typical_minimums) v.appendChild(el("li", "Meets the typical minimums", "pass"))
+      else (d.problems || []).forEach(function (t) { v.appendChild(el("li", t, "fail")) })
+      ;(d.renewals || []).forEach(function (t) { v.appendChild(el("li", t, "warn")) })
+      box.appendChild(v)
+      if (d.typical_minimums) box.appendChild(el("p", "Typical minimums: " + d.typical_minimums, "small"))
+      if (typeof d.reads_left_today === "number") box.appendChild(el("p", d.reads_left_today + " of your 3 free reads left today.", "small"))
+      show(box)
+    }
+    f.addEventListener("submit", function (ev) {
+      ev.preventDefault()
+      var file = document.getElementById("coi-file").files[0]
+      if (!file) { say("Please choose a certificate of insurance: a PDF, JPG or PNG, 10 MB or smaller.", "fail"); return }
+      var fd = new FormData()
+      fd.append("file", file)
+      btn.disabled = true
+      btn.textContent = "Reading..."
+      say("Reading your certificate. This can take up to a minute.")
+      fetch("https://app.coipatrol.com/check-certificate", { method: "POST", body: fd })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d } }) })
+        .then(function (x) { if (x.ok) render(x.d); else say(x.d.error || "Something went wrong. Please try again.", "fail") })
+        .catch(function () { say("We could not reach the reader. It may be restarting, so please try again in a minute, or use the manual checker below.", "fail") })
+        .then(function () { btn.disabled = false; btn.textContent = "Read this certificate" })
+    })
+  })()
+  </script>
 
   <h2>Does this certificate meet my requirements?</h2>
   <p class="answer">Use the free checker below to find out. Enter your minimums once, then type in what the certificate shows. You get a pass or fix result for each line in plain English, and a drafted email you can send to the sub and their agent. Everything runs in your browser. Nothing you type is sent anywhere.</p>
@@ -300,6 +384,8 @@
 <p>No. The certificate is informational only. It doesn't amend, extend, or alter the coverage of the policies listed, and the ACORD 25 form says so in its own disclaimer. Coverage rights come from the policy and its endorsements.</p>
     <h3>Does COI tracking software check that a policy is still active?</h3>
 <p>Most small-business tools don't. They read the certificate and track its dates, so a policy cancelled mid-term can still look valid. Some enterprise platforms, and tools that share live policy data from the insurer, can catch cancellations. If you need that, expect a higher price and a longer setup.</p>
+    <h3>Can I check a certificate without signing up?</h3>
+<p>Yes. Upload a PDF, JPG or PNG on our verify page and CoiPatrol reads the insured, agent, carriers, limits and dates, then compares them to typical minimums. It is free, limited to three a day per visitor, and nothing is stored. You need no account.</p>
   </section>
 
   <p>Once a certificate passes, track its expiration date. Our <a href="/free-coi-tracking-spreadsheet/">free COI tracking spreadsheet</a> turns dates red, yellow and green. If a sub's workers' comp is missing, see what it can cost you at <a href="/workers-comp-audit-subcontractors/">your workers' comp audit</a>.</p>

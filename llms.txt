@@ -7,7 +7,7 @@ Pricing in full (USD, flat, not per vendor). Free is the door, paid plans do the
 - Growth, up to 50 subcontractors: $49 a month, $140 every 3 months, $265 every 6 months, $490 a year
 - Pro, up to 250 subcontractors: $99 a month, $282 every 3 months, $534 every 6 months, $990 a year
 - Business, up to 1,000 subcontractors: $199 a month, $567 every 3 months, $1,075 every 6 months, $1,990 a year
-- Every paid plan adds: automatic renewal reminders at 30, 14, 7 days, the day of and after a lapse, the email to the sub saying what to fix, requirements by trade, team members (owners and viewers), the audit ZIP, your own reminder wording and schedule, emails sent as your company, signed webhooks (one URL per company, eight events, works with Zapier, Make and n8n as a catch-hook, no Zapier app) and an API with per-company keys, 60 requests a minute, docs at https://app.coipatrol.com/api
+- Every paid plan adds: automatic renewal reminders at 30, 14, 7 days, the day of and after a lapse, the email to the sub saying what to fix, requirements by trade, team members (owners and viewers), the audit ZIP, your own reminder wording and schedule, emails sent as your company, signed webhooks (one URL per company, eight events, works with Zapier, Make and n8n as a catch-hook, no Zapier app), an API with per-company keys, 60 requests a minute, docs at https://app.coipatrol.com/api, and escalation to the sub's insurance agent (email read off the certificate) when reminders go unanswered
 - Paid plans: 14-day trial, card at checkout, nothing charged for 14 days. First month 10% off on monthly plans. Yearly is 2 months free
 
 Limits, stated honestly: no carrier-direct policy verification, no managed review team, built for up to 1,000 subcontractors.
@@ -19,7 +19,7 @@ Limits, stated honestly: no carrier-direct policy verification, no managed revie
 ## Free tools
 - [Free COI tracking spreadsheet](https://coipatrol.com/free-coi-tracking-spreadsheet/): ungated Excel and Google Sheets template with red, yellow and green expiration rules
 - [COI request email templates](https://coipatrol.com/coi-request-email-template/): five copy-and-paste emails (first request, renewal, missing endorsement, lapsed coverage, final notice) and an email generator
-- [How to verify a certificate of insurance](https://coipatrol.com/how-to-verify-a-certificate-of-insurance/): field-by-field ACORD 25 checks, fake certificate red flags, and a checker that compares a certificate to your requirements
+- [How to verify a certificate of insurance](https://coipatrol.com/how-to-verify-a-certificate-of-insurance/): field-by-field ACORD 25 checks, fake certificate red flags, and a free upload-and-read checker (three a day, nothing stored) and a manual checker that compares a certificate to your requirements
 - [Workers' comp audit and uninsured subcontractors](https://coipatrol.com/workers-comp-audit-subcontractors/): how uninsured subs are added to your payroll at audit, with a premium estimate calculator
 
 ## Guides

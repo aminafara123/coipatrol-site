@@ -221,6 +221,14 @@
     "@type": "Answer",
     "text": "Yes, on paid plans. Each company gets its own API keys. You can check status, list and read subs with their policies and certificates, download a certificate, create a sub and request a certificate. Limit is 60 requests a minute. The docs are public at app.coipatrol.com/api."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I check a certificate without signing up?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Upload a PDF, JPG or PNG on our verify page and CoiPatrol reads the insured, agent, carriers, limits and dates, then compares them to typical minimums. It is free, limited to three a day per visitor, and nothing is stored. You need no account."
+   }
   }
  ]
 }
@@ -338,6 +346,7 @@
       <li>Emails sent as your company</li>
       <li>Webhooks for Zapier, Make and n8n, signed, eight events</li>
       <li>An API with per-company keys, documented at app.coipatrol.com/api</li>
+      <li>Escalation to the sub's insurance agent when reminders go unanswered</li>
     </ul>
     <p>Free also has the weekly summary, certificate history and one login.</p>
   </div>
@@ -369,6 +378,8 @@
 <p>Yes, with no Zapier app needed. Paid plans send signed JSON webhooks to one URL per company. Zapier, Make and n8n take that URL as a catch-hook. The eight events are certificate filed, needs review, held, policy expiring, policy expired, missing certificate, document received and sub added.</p>
     <h3>Is there an API?</h3>
 <p>Yes, on paid plans. Each company gets its own API keys. You can check status, list and read subs with their policies and certificates, download a certificate, create a sub and request a certificate. Limit is 60 requests a minute. The docs are public at app.coipatrol.com/api.</p>
+    <h3>Can I check a certificate without signing up?</h3>
+<p>Yes. Upload a PDF, JPG or PNG on our verify page and CoiPatrol reads the insured, agent, carriers, limits and dates, then compares them to typical minimums. It is free, limited to three a day per visitor, and nothing is stored. You need no account.</p>
     <h3>Do my subs need an account?</h3>
     <p>No. Each sub gets a private upload link. The sub or their insurance agent opens it and uploads the ACORD 25 PDF. The sub doesn't log in or install anything.</p>
     <h3>Can certificates come in by email?</h3>
@@ -389,15 +400,6 @@
     <p>Yes. Monthly plans stop at the end of the month you cancel in. You can export all your data to a spreadsheet before you go.</p>
     <h3>What if I have more than 1,000 subcontractors?</h3>
     <p>Email us at <a href="mailto:hello@coipatrol.com">hello@coipatrol.com</a> and we'll talk about a larger plan. At that size an enterprise platform may suit you better. Our <a href="/best-coi-tracking-software/">comparison</a> lists them.</p>
-  </section>
-
-  <section class="faq">
-    <h2>Planned</h2>
-    <p>These are not built yet. None has a date.</p>
-    <ul>
-      <li>Escalation to the sub's insurance agent after reminders go unanswered.</li>
-      <li>An upload-and-read checker on this site, three certificates a day, free.</li>
-    </ul>
   </section>
 
   <div class="cta-box full">
