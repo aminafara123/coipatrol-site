@@ -1,6 +1,8 @@
 # Outside uptime check for app.coipatrol.com. Runs on GitHub's servers every
 # 15 minutes. If the app does not answer 200 after three tries, the run fails
 # and GitHub emails the account that owns the repo. Deployed with the site.
+# The login page answers 200 with no side effects. /demo logs the visitor in (303)
+# and reseeds the demo after 30 minutes, so a poller must not use it.
 name: Uptime
 on:
   schedule:
@@ -9,14 +11,14 @@ on:
     inputs:
       url:
         description: URL to check
-        default: https://app.coipatrol.com/demo
+        default: https://app.coipatrol.com/login
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - name: app.coipatrol.com must answer 200
         run: |
-          url="${{ github.event.inputs.url || 'https://app.coipatrol.com/demo' }}"
+          url="${{ github.event.inputs.url || 'https://app.coipatrol.com/login' }}"
           for i in 1 2 3; do
             code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
             echo "try $i: $url -> $code"
