@@ -149,9 +149,10 @@
 
   <form class="tool full" id="coi-read" hidden>
     <p class="cta-title">Upload a certificate and we read it</p>
-    <label>Certificate file (PDF, JPG or PNG, 10 MB or smaller)
+    <label>Choose a PDF or photo
       <input name="file" id="coi-file" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
     </label>
+    <label class="btn light take-photo">Take a photo<input id="coi-photo" type="file" accept="image/*" capture="environment"></label>
     <p class="note-red">Photos: hold the phone straight over the certificate in good light, no glare, all four corners in the frame. A clear photo is read in seconds, a blurry one is not read at all.</p>
     <div class="actions"><button class="btn" type="submit" id="coi-read-btn">Read this certificate</button></div>
     <p class="small">Three a day, free, nothing is stored</p>
@@ -162,6 +163,9 @@
     var f = document.getElementById("coi-read")
     f.hidden = false
     var btn = document.getElementById("coi-read-btn"), out = document.getElementById("coi-read-out")
+    var pick = document.getElementById("coi-file"), cam = document.getElementById("coi-photo")
+    pick.addEventListener("change", function () { cam.value = "" })
+    cam.addEventListener("change", function () { if (cam.files[0]) { pick.value = ""; btn.click() } })
     var names = { GL: "General liability", WC: "Workers' comp", AUTO: "Auto", UMBRELLA: "Umbrella", OTHER: "Other" }
     function el(tag, text, cls) { var n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n }
     function show(node) { out.textContent = ""; out.hidden = false; out.appendChild(node) }
@@ -205,7 +209,7 @@
     }
     f.addEventListener("submit", function (ev) {
       ev.preventDefault()
-      var file = document.getElementById("coi-file").files[0]
+      var file = cam.files[0] || pick.files[0]
       if (!file) { say("Please choose a certificate of insurance: a PDF, JPG or PNG, 10 MB or smaller.", "fail"); return }
       var fd = new FormData()
       fd.append("file", file)

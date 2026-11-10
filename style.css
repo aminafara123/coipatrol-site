@@ -220,6 +220,9 @@ pre { background: var(--tint); padding: 16px; border-radius: var(--radius); whit
 .tool .warn::before { content: "Renewal due soon: "; font-weight: 700; color: var(--yellow); }
 button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 @media (min-width: 720px) { .tool .fields.two { grid-template-columns: 1fr 1fr; } }
+.tool .take-photo { display: inline-block; margin-top: 12px; }
+.tool .take-photo input { display: none; }
+@media (hover: hover) and (pointer: fine) { .tool .take-photo { display: none } }
 
 /* annotated sample certificate (home): a ruled paper form on a faint second sheet */
 .acord-grid { display: grid; gap: 32px; margin: 24px 0; align-items: start; }
