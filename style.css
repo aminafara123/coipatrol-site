@@ -59,6 +59,7 @@ main > section.wrap > .cta-box { margin: 0; }
 .btn.light:hover { background: var(--tint); color: var(--brand-dark); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 24px 0; }
 .small { font-size: 15px; color: var(--muted); }
+.note-red { font-size: 15px; color: #b91c1c; margin: 8px 0 0; }
 
 /* hero */
 .hero { padding: 56px 0; }
