@@ -206,6 +206,7 @@ pre { background: var(--tint); padding: 16px; border-radius: var(--radius); whit
 /* client-side tools (inline JS on the page, nothing leaves the browser) */
 .tool { background: var(--surface); border: 1px solid var(--line-card); border-radius: var(--r-card); box-shadow: var(--sh-sm); padding: 20px; margin: 24px 0; }
 .tool h3 { margin-top: 0; }
+.tool .cta-title { color: var(--ink); }
 .tool .fields { display: grid; gap: 14px; margin-bottom: 16px; }
 .tool fieldset { border: 1px solid var(--line-card); border-radius: var(--radius); padding: 12px 16px; margin: 0 0 16px; }
 .tool legend { font-weight: 600; padding: 0 6px; }
