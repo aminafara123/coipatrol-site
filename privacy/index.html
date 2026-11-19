@@ -50,8 +50,8 @@
 <main id="main">
 <section class="wrap article">
   <h1>Privacy Policy</h1>
-  <p class="dateline">Last updated: October 20, 2026</p>
-  <p class="lede">This page explains what data CoiPatrol collects, why we need it, and what we do with it. The short version: we keep only what the service needs to work, we do not track you, and we never sell your data.</p>
+  <p class="dateline">Last updated: November 19, 2026</p>
+  <p class="lede">This page explains what data CoiPatrol collects, why we need it, and what we do with it. The short version: we keep only what the service needs to work, we count page views without cookies, and we never sell your data.</p>
 
   <h2>Who is responsible</h2>
   <p>CoiPatrol is run by its founder, an individual based in the United Arab Emirates. For any privacy question or request, email <a href="mailto:hello@coipatrol.com">hello@coipatrol.com</a>.</p>
@@ -63,7 +63,9 @@
     <li><strong>Subcontractor details you enter:</strong> the names, trades, emails and phone numbers you add for your subcontractors, so CoiPatrol can track their certificates and email them renewal reminders on your behalf.</li>
     <li><strong>Emails to us:</strong> if you write to hello@coipatrol.com, we keep the conversation so we can help you.</li>
   </ul>
-  <p>We do not use analytics or advertising trackers on the website or in the app.</p>
+  <p>We count page views on this website and on the app's public pages ourselves, so we know which pages get read. For each view we record the page, the website that linked to it, and the time.</p>
+  <p>To tell one visitor from another on the same day, we store a scrambled code made from the IP address and browser type. The code cannot be turned back into an IP address, and it changes every day.</p>
+  <p>We do not use cookies for this, we do not use any outside analytics or advertising service, and we do not follow you to other websites.</p>
 
   <h2>Why we use it</h2>
   <p>We use your data only to run CoiPatrol for you: to let you sign in, to read your certificates, to show you which ones are current or expiring, to send confirmation, password reset, summary and renewal reminder emails, and to answer your questions. We do not use it for advertising and we do not sell it to anyone.</p>
@@ -128,5 +130,9 @@
   </div>
   <div class="wrap"><p class="small">Copyright 2026 CoiPatrol. Contact: <a href="mailto:hello@coipatrol.com">hello@coipatrol.com</a><br><a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a> · <a href="/refund-policy/">Refunds</a></p></div>
 </footer>
+<script>
+(function(){var l=location;try{if(l.hash=="#nocount")localStorage.nocount=1;if(localStorage.nocount)return}catch(e){}
+new Image().src="https://app.coipatrol.com/seen?h="+l.hostname+"&p="+encodeURIComponent(l.pathname)+"&s="+encodeURIComponent((l.search.match(/[?&]ref=([\w-]+)/)||[])[1]||"")+"&r="+encodeURIComponent(document.referrer)})();
+</script>
 </body>
 </html>
